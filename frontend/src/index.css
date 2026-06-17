@@ -1,0 +1,480 @@
+@import "tailwindcss";
+
+/* ============================================================
+   ASTRAM Design System — Deep Navy Command Center Theme
+   ============================================================ */
+
+@theme {
+  /* Primary palette */
+  --color-navy-950: #0a0e1a;
+  --color-navy-900: #0d1525;
+  --color-navy-800: #131d35;
+  --color-navy-700: #1a2744;
+  --color-navy-600: #243358;
+  --color-navy-500: #2e4170;
+
+  /* Accent — Electric Blue */
+  --color-accent-400: #38bdf8;
+  --color-accent-500: #0ea5e9;
+  --color-accent-600: #0284c7;
+
+  /* ECRS Risk Colors */
+  --color-risk-low: #22c55e;
+  --color-risk-moderate: #eab308;
+  --color-risk-high: #f97316;
+  --color-risk-critical: #ef4444;
+  --color-risk-extreme: #dc2626;
+
+  /* Cascade risk */
+  --color-cascade-low: #22c55e;
+  --color-cascade-moderate: #eab308;
+  --color-cascade-high: #f97316;
+  --color-cascade-critical: #ef4444;
+
+  /* Surface / Glass */
+  --color-glass-bg: rgba(13, 21, 37, 0.8);
+  --color-glass-border: rgba(56, 189, 248, 0.15);
+  --color-glass-hover: rgba(56, 189, 248, 0.08);
+
+  /* Text */
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+}
+
+/* ============================================================
+   Base Styles
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--color-navy-950);
+  color: var(--color-text-primary);
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   Scrollbar Styling
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.4);
+}
+
+/* ============================================================
+   Glassmorphism Components
+   ============================================================ */
+
+.glass-panel {
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 12px;
+}
+
+.glass-panel-sm {
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 8px;
+}
+
+.glass-panel:hover {
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+/* ============================================================
+   ECRS Badge Styles
+   ============================================================ */
+
+.ecrs-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.ecrs-low {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.ecrs-moderate {
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.ecrs-high {
+  background: rgba(249, 115, 22, 0.15);
+  color: #fb923c;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.ecrs-critical {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.ecrs-extreme {
+  background: rgba(220, 38, 38, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(220, 38, 38, 0.5);
+  animation: pulse-extreme 1.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+
+@keyframes pulse-extreme {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+  50% { opacity: 0.85; box-shadow: 0 0 20px 4px rgba(220, 38, 38, 0.2); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.5); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: var(--color-accent-400); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-slide-in-right { animation: slide-in-right 0.3s ease-out; }
+.animate-slide-in-up { animation: slide-in-up 0.4s ease-out; }
+.animate-fade-in { animation: fade-in 0.3s ease-out; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 3s linear infinite; }
+
+/* ============================================================
+   POI Aura (Map Overlay)
+   ============================================================ */
+
+.poi-aura {
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.poi-aura.dormant {
+  background: radial-gradient(circle, rgba(100, 116, 139, 0.15) 0%, transparent 70%);
+}
+
+.poi-aura.active {
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.poi-aura.peak {
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.3) 0%, transparent 70%);
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   Leaflet Map Overrides (Dark Theme)
+   ============================================================ */
+
+.leaflet-container {
+  background: var(--color-navy-950) !important;
+  border-radius: 12px;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--color-navy-800) !important;
+  color: var(--color-text-primary) !important;
+  border: 1px solid var(--color-glass-border) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--color-navy-800) !important;
+  border: 1px solid var(--color-glass-border) !important;
+}
+
+.leaflet-popup-close-button {
+  color: var(--color-text-secondary) !important;
+}
+
+.leaflet-control-zoom a {
+  background: var(--color-navy-800) !important;
+  color: var(--color-text-primary) !important;
+  border: 1px solid var(--color-glass-border) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: var(--color-navy-700) !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(10, 14, 26, 0.8) !important;
+  color: var(--color-text-muted) !important;
+  font-size: 10px !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--color-accent-400) !important;
+}
+
+/* ============================================================
+   Gradient Backgrounds
+   ============================================================ */
+
+.gradient-accent {
+  background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-400));
+}
+
+.gradient-risk-high {
+  background: linear-gradient(135deg, #f97316, #ef4444);
+}
+
+.gradient-header {
+  background: linear-gradient(90deg, var(--color-navy-900), var(--color-navy-800));
+  border-bottom: 1px solid var(--color-glass-border);
+}
+
+/* ============================================================
+   Cascade Ripple Effect
+   ============================================================ */
+
+.cascade-ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid;
+  animation: ripple 2s ease-out forwards;
+  pointer-events: none;
+}
+
+.cascade-ripple.low { border-color: var(--color-cascade-low); }
+.cascade-ripple.moderate { border-color: var(--color-cascade-moderate); }
+.cascade-ripple.high { border-color: var(--color-cascade-high); }
+.cascade-ripple.critical { border-color: var(--color-cascade-critical); }
+
+/* ============================================================
+   Mission Brief Card
+   ============================================================ */
+
+.mission-brief {
+  background: linear-gradient(180deg, rgba(13, 21, 37, 0.95), rgba(10, 14, 26, 0.98));
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-left: 3px solid var(--color-accent-400);
+  border-radius: 8px;
+  padding: 20px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+/* ============================================================
+   Calendar Badges
+   ============================================================ */
+
+.calendar-badge {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 1px;
+}
+
+.calendar-badge.festival { background: #f59e0b; }
+.calendar-badge.sports { background: #3b82f6; }
+.calendar-badge.procession { background: #ef4444; }
+.calendar-badge.holiday { background: #22c55e; }
+.calendar-badge.vip { background: #a855f7; }
+
+/* ============================================================
+   Interactive Elements
+   ============================================================ */
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent-600), var(--color-accent-500));
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--color-navy-700);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-glass-border);
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-secondary:hover {
+  background: var(--color-navy-600);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* Form inputs */
+.input-field {
+  background: var(--color-navy-800);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+  width: 100%;
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+
+.input-field:focus {
+  border-color: var(--color-accent-400);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+.input-field::placeholder {
+  color: var(--color-text-muted);
+}
+
+select.input-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+/* ============================================================
+   Utility Classes
+   ============================================================ */
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-accent-400), #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-glow {
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+}
+
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
