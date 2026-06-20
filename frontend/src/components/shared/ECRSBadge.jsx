@@ -20,9 +20,9 @@ export default function ECRSBadge({ score, showLabel = true, size = 'md' }) {
   const level = getEcrsLevel(score || 0);
   
   const sizeClasses = {
-    sm: 'text-[10px] px-1.5 py-0.5',
-    md: 'text-xs px-2.5 py-1',
-    lg: 'text-sm px-3 py-1.5',
+    sm: 'text-xs px-2 py-1',
+    md: 'text-sm px-3 py-1.5',
+    lg: 'text-base px-4 py-2',
   };
   
   return (
@@ -31,7 +31,7 @@ export default function ECRSBadge({ score, showLabel = true, size = 'md' }) {
       title={`ECRS: ${score}/10 — ${level.label}`}
     >
       <span style={{ fontVariantNumeric: 'tabular-nums' }}>{score?.toFixed?.(1) || '0.0'}</span>
-      {showLabel && <span className="ml-1.5 opacity-80">{level.label}</span>}
+      {showLabel && <span className="ml-2 opacity-80">{level.label}</span>}
     </span>
   );
 }

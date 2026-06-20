@@ -23,7 +23,7 @@ const PIE_COLORS = [
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="glass-panel-sm px-3 py-2 text-xs">
+    <div className="glass-panel-sm px-3 py-2 text-sm">
       <p className="text-text-primary font-semibold">{label}</p>
       {payload.map((p, i) => (
         <p key={i} style={{ color: p.color }} className="mt-0.5">
@@ -74,18 +74,18 @@ export default function AnalyticsPage() {
   }));
 
   return (
-    <div className="h-full overflow-y-auto p-4">
+    <div className="h-full overflow-y-auto p-6">
       {/* Header */}
-      <div className="flex items-center gap-3 mb-4">
-        <BarChart3 className="w-5 h-5 text-accent-400" />
-        <h1 className="text-lg font-bold text-text-primary">Analytics Dashboard</h1>
-        <span className="text-xs text-text-muted ml-auto">
-          Dataset: {stats.total_incidents?.toLocaleString()} incidents (Nov 2023 – Apr 2024)
+      <div className="flex items-center gap-4 mb-6">
+        <BarChart3 className="w-6 h-6 text-accent-400 flex-shrink-0" />
+        <h1 className="text-3xl font-bold text-text-primary">Analytics Dashboard</h1>
+        <span className="text-sm text-text-muted ml-auto whitespace-nowrap">
+          {stats.total_incidents?.toLocaleString()} incidents
         </span>
       </div>
 
       {/* Key Metrics Row */}
-      <div className="grid grid-cols-5 gap-3 mb-4">
+      <div className="grid grid-cols-5 gap-4 mb-6">
         {[
           { label: 'Total Incidents', value: stats.total_incidents?.toLocaleString(), icon: Activity, color: 'text-accent-400' },
           { label: 'Active Now', value: stats.active_incidents, icon: AlertTriangle, color: 'text-risk-critical' },
@@ -93,29 +93,29 @@ export default function AnalyticsPage() {
           { label: 'Top Cause', value: stats.most_common_cause?.cause?.replace('_', ' '), sub: `${stats.most_common_cause?.count} (${((stats.most_common_cause?.count / stats.total_incidents) * 100).toFixed(1)}%)`, icon: TrendingUp, color: 'text-risk-moderate' },
           { label: 'Avg ECRS', value: stats.avg_ecrs, icon: Activity, color: 'text-accent-400' },
         ].map((m, i) => (
-          <div key={i} className="glass-panel p-3 hover-lift animate-slide-in-up" style={{ animationDelay: `${i * 60}ms` }}>
-            <div className="flex items-center gap-2 mb-1">
-              <m.icon className={`w-4 h-4 ${m.color}`} />
-              <span className="text-[10px] text-text-muted uppercase tracking-wider">{m.label}</span>
+          <div key={i} className="glass-panel px-5 py-4 hover-lift animate-slide-in-up" style={{ animationDelay: `${i * 60}ms` }}>
+            <div className="flex items-center gap-2 mb-2">
+              <m.icon className={`w-5 h-5 ${m.color} flex-shrink-0`} />
+              <span className="text-xs text-text-muted uppercase tracking-wider font-medium">{m.label}</span>
             </div>
-            <p className="text-lg font-bold text-text-primary capitalize">{m.value}</p>
-            {m.sub && <p className="text-[10px] text-text-muted">{m.sub}</p>}
+            <p className="text-2xl font-bold text-text-primary capitalize">{m.value}</p>
+            {m.sub && <p className="text-xs text-text-muted">{m.sub}</p>}
           </div>
         ))}
       </div>
 
       {/* Charts Grid */}
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-2 gap-6 mb-6">
         {/* Hourly Distribution */}
-        <div className="glass-panel p-4">
-          <h3 className="text-sm font-semibold text-text-primary mb-3 flex items-center gap-2">
-            <Clock className="w-4 h-4 text-accent-400" /> Incidents by Hour of Day
+        <div className="glass-panel px-6 py-5">
+          <h3 className="text-base font-semibold text-text-primary mb-4 flex items-center gap-3">
+            <Clock className="w-5 h-5 text-accent-400 flex-shrink-0" /> Incidents by Hour
           </h3>
-          <ResponsiveContainer width="100%" height={240}>
+          <ResponsiveContainer width="100%" height={280}>
             <BarChart data={hourlyData}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(56,189,248,0.1)" />
-              <XAxis dataKey="hour" tick={{ fill: '#94a3b8', fontSize: 10 }} interval={2} />
-              <YAxis tick={{ fill: '#94a3b8', fontSize: 10 }} />
+              <XAxis dataKey="hour" tick={{ fill: '#94a3b8', fontSize: 12 }} interval={2} />
+              <YAxis tick={{ fill: '#94a3b8', fontSize: 12 }} />
               <Tooltip content={<CustomTooltip />} />
               <defs>
                 <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
@@ -123,24 +123,24 @@ export default function AnalyticsPage() {
                   <stop offset="100%" stopColor="#0284c7" stopOpacity={0.6} />
                 </linearGradient>
               </defs>
-              <Bar dataKey="incidents" fill="url(#barGrad)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="incidents" fill="url(#barGrad)" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         {/* Cause Breakdown Donut */}
-        <div className="glass-panel p-4">
-          <h3 className="text-sm font-semibold text-text-primary mb-3 flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4 text-accent-400" /> Event Cause Breakdown
+        <div className="glass-panel px-6 py-5">
+          <h3 className="text-base font-semibold text-text-primary mb-4 flex items-center gap-3">
+            <AlertTriangle className="w-5 h-5 text-accent-400 flex-shrink-0" /> Cause Breakdown
           </h3>
-          <ResponsiveContainer width="100%" height={240}>
+          <ResponsiveContainer width="100%" height={280}>
             <PieChart>
               <Pie
                 data={causeData}
                 cx="50%"
                 cy="50%"
-                innerRadius={55}
-                outerRadius={90}
+                innerRadius={60}
+                outerRadius={100}
                 paddingAngle={2}
                 dataKey="value"
               >

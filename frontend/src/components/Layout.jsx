@@ -24,42 +24,42 @@ export default function Layout() {
       {/* Sidebar */}
       <aside
         className={`flex flex-col h-full transition-all duration-300 ease-in-out border-r border-glass-border bg-navy-900/80 backdrop-blur-xl ${
-          collapsed ? 'w-[68px]' : 'w-[240px]'
+          collapsed ? 'w-[68px]' : 'w-[260px]'
         }`}
       >
         {/* Logo */}
-        <div className="flex items-center gap-3 px-4 h-16 border-b border-glass-border shrink-0">
-          <div className="w-9 h-9 rounded-lg gradient-accent flex items-center justify-center shrink-0">
-            <Shield className="w-5 h-5 text-white" />
+        <div className="flex items-center gap-4 px-5 h-16 border-b border-glass-border shrink-0">
+          <div className="w-10 h-10 rounded-lg gradient-accent flex items-center justify-center shrink-0">
+            <Shield className="w-6 h-6 text-white" />
           </div>
           {!collapsed && (
             <div className="animate-fade-in">
-              <h1 className="text-base font-bold text-gradient tracking-wide">ASTRAM</h1>
-              <p className="text-[10px] text-text-muted leading-none">Traffic Intelligence</p>
+              <h1 className="text-lg font-bold text-gradient tracking-wider">ASTRAM</h1>
+              <p className="text-xs text-text-muted leading-none mt-0.5">Traffic Intelligence</p>
             </div>
           )}
         </div>
 
         {/* Nav Items */}
-        <nav className="flex-1 py-4 px-2 space-y-1">
+        <nav className="flex-1 py-6 px-3 space-y-2">
           {navItems.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
               end={item.path === '/'}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group ${
+                `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
                   isActive
-                    ? 'bg-accent-500/15 text-accent-400 border border-accent-500/20'
-                    : 'text-text-secondary hover:text-text-primary hover:bg-navy-800/60'
+                    ? 'bg-accent-500/20 text-accent-400 border border-accent-500/30'
+                    : 'text-text-secondary hover:text-text-primary hover:bg-navy-800/50'
                 }`
               }
             >
               <item.icon className="w-5 h-5 shrink-0" />
               {!collapsed && (
                 <div className="animate-fade-in">
-                  <div className="text-sm font-medium">{item.label}</div>
-                  <div className="text-[10px] text-text-muted">{item.description}</div>
+                  <div className="text-base font-medium">{item.label}</div>
+                  <div className="text-xs text-text-muted">{item.description}</div>
                 </div>
               )}
             </NavLink>
@@ -67,11 +67,11 @@ export default function Layout() {
         </nav>
 
         {/* Status indicator */}
-        <div className="px-3 py-3 border-t border-glass-border">
+        <div className="px-4 py-4 border-t border-glass-border">
           <div className={`flex items-center gap-2 ${collapsed ? 'justify-center' : ''}`}>
             <Radio className="w-3.5 h-3.5 text-risk-low animate-pulse" />
             {!collapsed && (
-              <span className="text-[11px] text-text-muted">System Operational</span>
+              <span className="text-[11px] text-text-muted font-medium">System Operational</span>
             )}
           </div>
         </div>
@@ -79,9 +79,9 @@ export default function Layout() {
         {/* Collapse toggle */}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="flex items-center justify-center h-10 border-t border-glass-border text-text-muted hover:text-text-primary transition-colors"
+          className="flex items-center justify-center h-12 border-t border-glass-border text-text-muted hover:text-text-primary hover:bg-navy-800/50 transition-colors"
         >
-          {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+          {collapsed ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
         </button>
       </aside>
 

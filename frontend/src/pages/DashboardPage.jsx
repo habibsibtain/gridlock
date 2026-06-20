@@ -86,27 +86,29 @@ export default function DashboardPage() {
       <ZoneSummaryBar stats={stats} />
 
       {/* Main Content: Map + Alert Feed */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden gap-4 p-4">
         {/* Map Area */}
-        <div className="flex-1 relative flex flex-col">
-          <div className="flex-1 p-3 pb-0">
-            <IncidentMap
-              incidents={incidents}
-              activeIncidents={activeIncidents}
-              pois={pois}
-              cascadeResult={cascadeResult}
-              onIncidentClick={setSelectedIncident}
-            />
+        <div className="flex-1 relative flex flex-col gap-3">
+          <div className="flex-1 min-h-0">
+            <div className="h-full">
+              <IncidentMap
+                incidents={incidents}
+                activeIncidents={activeIncidents}
+                pois={pois}
+                cascadeResult={cascadeResult}
+                onIncidentClick={setSelectedIncident}
+              />
+            </div>
           </div>
 
           {/* Cascade Simulator */}
-          <div className="p-3 pt-2">
+          <div>
             <CascadeSimulator onResult={handleCascadeResult} />
           </div>
         </div>
 
         {/* Alert Feed */}
-        <div className="w-[380px] border-l border-glass-border flex flex-col overflow-hidden">
+        <div className="w-96 border-l border-glass-border flex flex-col overflow-hidden">
           <AlertFeed
             incidents={activeIncidents}
             onGetRecommendation={handleGetRecommendation}

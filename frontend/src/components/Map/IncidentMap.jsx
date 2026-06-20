@@ -146,7 +146,7 @@ export default function IncidentMap({
                     <p className="font-semibold text-sm leading-tight flex-1">
                       {incident.event_cause?.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
                     </p>
-                    <span className={`ecrs-badge text-[10px] px-1.5 py-0.5 ${
+                    <span className={`ecrs-badge text-xs px-2 py-0.5 ${
                       incident.ecrs_score >= 8 ? 'ecrs-critical' :
                       incident.ecrs_score >= 6 ? 'ecrs-high' :
                       incident.ecrs_score >= 4 ? 'ecrs-moderate' : 'ecrs-low'
@@ -155,9 +155,9 @@ export default function IncidentMap({
                     </span>
                   </div>
                   
-                  <p className="text-xs opacity-70 mb-2 line-clamp-2">{incident.address}</p>
+                  <p className="text-sm opacity-70 mb-2 line-clamp-2">{incident.address}</p>
                   
-                  <div className="text-xs space-y-1 opacity-80">
+                  <div className="text-sm space-y-1 opacity-80">
                     {incident.corridor && incident.corridor !== 'Non-corridor' && (
                       <p className="flex items-center gap-1">
                         <MapPin className="w-3 h-3" /> {incident.corridor}
