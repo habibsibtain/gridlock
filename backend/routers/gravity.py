@@ -5,7 +5,7 @@ Gravity Router — POI gravity score endpoints.
 from fastapi import APIRouter, Query
 from typing import Optional
 from datetime import datetime, time
-from services.gravity_model import compute_gravity_score, get_all_pois_with_status
+from backend.services.poi_gravity_model import compute_gravity_score, get_all_pois_with_status
 
 router = APIRouter(prefix="/api", tags=["gravity"])
 

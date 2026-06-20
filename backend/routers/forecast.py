@@ -5,7 +5,7 @@ Forecast Router — ECRS prediction and resource recommendations.
 from fastapi import APIRouter
 from models import ForecastRequest
 from services.ecrs_engine import compute_full_ecrs, compute_resource_recommendation
-from services.gravity_model import compute_gravity_score
+from backend.services.poi_gravity_model import compute_gravity_score
 from services.calendar_intel import get_calendar_risk
 from database import get_historical_stats_for_location
 from datetime import datetime, time
