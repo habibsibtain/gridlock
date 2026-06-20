@@ -76,18 +76,18 @@ export default function MissionBrief({ incident, brief, onClose }) {
 
               {/* Resource Recommendation */}
               {brief.resources && (
-                <div className="glass-panel px-5 py-4 border-accent-400/20">
+                <div className="glass-panel px-5 py-4 border-cyan-400/20">
                   <div className="flex items-center gap-2 mb-3">
-                    <User className="w-4 h-4 text-accent-400" />
+                    <User className="w-4 h-4 text-cyan-400" />
                     <h3 className="text-sm font-semibold text-text-primary">Resource Deployment</h3>
                   </div>
-                  <p className="text-3xl font-bold text-accent-400 mb-2">
+                    <p className="text-3xl font-bold text-cyan-300 mb-2">
                     {brief.resources.total_officers} Officers
                   </p>
                   <ul className="space-y-2">
                     {brief.resources.positions?.map((pos, idx) => (
                       <li key={idx} className="text-sm text-text-secondary flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent-400" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-300" />
                         {pos}
                       </li>
                     ))}

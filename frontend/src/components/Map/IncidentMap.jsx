@@ -29,7 +29,7 @@ function POICircles({ pois }) {
           poi.status === 'peak'
             ? '#f97316'
             : poi.status === 'active'
-            ? '#38bdf8'
+            ? '#00e5ff'
             : '#475569';
         const opacity = poi.status === 'peak' ? 0.2 : poi.status === 'active' ? 0.12 : 0.06;
 

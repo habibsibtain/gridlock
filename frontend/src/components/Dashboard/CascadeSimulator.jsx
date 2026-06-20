@@ -45,7 +45,7 @@ export default function CascadeSimulator({ onResult }) {
   return (
     <div className="glass-panel px-5 py-4">
       <div className="flex items-center gap-3 mb-4">
-        <Network className="w-5 h-5 text-accent-400 flex-shrink-0" />
+        <Network className="w-5 h-5 text-cyan-300 flex-shrink-0" />
         <h3 className="text-sm font-semibold text-text-primary uppercase tracking-wider">
           Cascade Impact Simulator
         </h3>
@@ -81,7 +81,7 @@ export default function CascadeSimulator({ onResult }) {
             step="10"
             value={blockPercentage}
             onChange={(e) => setBlockPercentage(Number(e.target.value))}
-            className="w-full h-2 bg-navy-700 rounded-lg appearance-none cursor-pointer accent-accent-400"
+            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-300"
           />
         </div>
 
@@ -117,7 +117,7 @@ export default function CascadeSimulator({ onResult }) {
                 <p className="text-xs font-semibold truncate mb-3">{alert.corridor}</p>
                 <div className="flex items-center gap-2">
                   <div className="flex-1">
-                    <div className="h-2 bg-navy-800 rounded-full overflow-hidden">
+                    <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
                       <div
                         className="h-full rounded-full transition-all duration-500"
                         style={{

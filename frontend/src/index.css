@@ -5,18 +5,23 @@
    ============================================================ */
 
 @theme {
-  /* Primary palette */
-  --color-navy-950: #0a0e1a;
-  --color-navy-900: #0d1525;
-  --color-navy-800: #131d35;
-  --color-navy-700: #1a2744;
-  --color-navy-600: #243358;
-  --color-navy-500: #2e4170;
+  /* Primary palette — Black backgrounds */
+  --color-navy-950: #000000;
+  --color-navy-900: #0a0a0a;
+  --color-navy-800: #1a1a1a;
+  --color-navy-700: #2a2a2a;
+  --color-navy-600: #3a3a3a;
+  --color-navy-500: #4a4a4a;
 
-  /* Accent — Electric Blue */
-  --color-accent-400: #38bdf8;
-  --color-accent-500: #0ea5e9;
-  --color-accent-600: #0284c7;
+  /* Accent — Bright Sky Blue */
+  --color-accent-400: #00e5ff;
+  --color-accent-500: #00e5ff;
+  --color-accent-600: #00b8cc;
+
+  /* Button Colors */
+  --color-primary-blue: #00e5ff;
+  --color-secondary-yellow: #ffdd00;
+  --color-success-green: #22ff22;
 
   /* ECRS Risk Colors */
   --color-risk-low: #22c55e;
@@ -32,9 +37,9 @@
   --color-cascade-critical: #ef4444;
 
   /* Surface / Glass */
-  --color-glass-bg: rgba(13, 21, 37, 0.8);
-  --color-glass-border: rgba(56, 189, 248, 0.15);
-  --color-glass-hover: rgba(56, 189, 248, 0.08);
+  --color-glass-bg: rgba(0, 0, 0, 0.95);
+  --color-glass-border: rgba(0, 229, 255, 0.15);
+  --color-glass-hover: rgba(0, 229, 255, 0.08);
 
   /* Text */
   --color-text-primary: #f1f5f9;
@@ -59,7 +64,7 @@ html, body, #root {
 }
 
 body {
-  background: var(--color-navy-950);
+  background: #000000;
   color: var(--color-text-primary);
   font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -80,12 +85,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(56, 189, 248, 0.2);
+  background: rgba(0, 229, 255, 0.2);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(56, 189, 248, 0.4);
+  background: rgba(0, 229, 255, 0.4);
 }
 
 /* ============================================================
@@ -111,7 +116,7 @@ body {
 }
 
 .glass-panel:hover {
-  border-color: rgba(56, 189, 248, 0.25);
+  border-color: rgba(0, 229, 255, 0.25);
 }
 
 /* ============================================================
@@ -236,7 +241,7 @@ body {
 }
 
 .poi-aura.active {
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.2) 0%, transparent 70%);
   animation: pulse-glow 3s ease-in-out infinite;
 }
 
@@ -250,20 +255,20 @@ body {
    ============================================================ */
 
 .leaflet-container {
-  background: var(--color-navy-950) !important;
+  background: #000000 !important;
   border-radius: 12px;
 }
 
 .leaflet-popup-content-wrapper {
-  background: var(--color-navy-800) !important;
+  background: #1a1a1a !important;
   color: var(--color-text-primary) !important;
   border: 1px solid var(--color-glass-border) !important;
   border-radius: 10px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8) !important;
 }
 
 .leaflet-popup-tip {
-  background: var(--color-navy-800) !important;
+  background: #1a1a1a !important;
   border: 1px solid var(--color-glass-border) !important;
 }
 
@@ -272,23 +277,23 @@ body {
 }
 
 .leaflet-control-zoom a {
-  background: var(--color-navy-800) !important;
+  background: #1a1a1a !important;
   color: var(--color-text-primary) !important;
   border: 1px solid var(--color-glass-border) !important;
 }
 
 .leaflet-control-zoom a:hover {
-  background: var(--color-navy-700) !important;
+  background: #2a2a2a !important;
 }
 
 .leaflet-control-attribution {
-  background: rgba(10, 14, 26, 0.8) !important;
+  background: rgba(0, 0, 0, 0.9) !important;
   color: var(--color-text-muted) !important;
   font-size: 10px !important;
 }
 
 .leaflet-control-attribution a {
-  color: var(--color-accent-400) !important;
+  color: #00e5ff !important;
 }
 
 /* ============================================================
@@ -304,7 +309,7 @@ body {
 }
 
 .gradient-header {
-  background: linear-gradient(90deg, var(--color-navy-900), var(--color-navy-800));
+  background: linear-gradient(90deg, #0a0a0a, #1a1a1a);
   border-bottom: 1px solid var(--color-glass-border);
 }
 
@@ -330,9 +335,9 @@ body {
    ============================================================ */
 
 .mission-brief {
-  background: linear-gradient(180deg, rgba(13, 21, 37, 0.95), rgba(10, 14, 26, 0.98));
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  border-left: 4px solid var(--color-accent-400);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 1));
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-left: 4px solid #00e5ff;
   border-radius: 10px;
   padding: 24px 28px;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
@@ -364,8 +369,8 @@ body {
    ============================================================ */
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-accent-600), var(--color-accent-500));
-  color: white;
+  background: linear-gradient(135deg, #00b8cc, #00e5ff);
+  color: #000000;
   border: none;
   padding: 10px 24px;
   border-radius: 8px;
@@ -380,7 +385,7 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(14, 165, 233, 0.45);
+  box-shadow: 0 6px 24px rgba(0, 229, 255, 0.8);
 }
 
 .btn-primary:active {
@@ -388,9 +393,9 @@ body {
 }
 
 .btn-secondary {
-  background: var(--color-navy-700);
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-glass-border);
+  background: #ffdd00;
+  color: #000000;
+  border: none;
   padding: 10px 24px;
   border-radius: 8px;
   font-weight: 600;
@@ -403,13 +408,14 @@ body {
 }
 
 .btn-secondary:hover {
-  background: var(--color-navy-600);
-  border-color: rgba(56, 189, 248, 0.3);
+  background: #ffeb3b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 221, 0, 0.6);
 }
 
 .btn-danger {
-  background: linear-gradient(135deg, #dc2626, #ef4444);
-  color: white;
+  background: linear-gradient(135deg, #00cc00, #22ff22);
+  color: #000000;
   border: none;
   padding: 10px 24px;
   border-radius: 8px;
@@ -424,7 +430,7 @@ body {
 
 .btn-danger:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+  box-shadow: 0 4px 20px rgba(34, 255, 34, 0.6);
 }
 
 /* Form inputs */
@@ -462,7 +468,7 @@ select.input-field {
 }
 
 select.input-field option {
-  background: var(--color-navy-800);
+  background: #1a1a1a;
   color: var(--color-text-primary);
   padding: 12px;
 }
@@ -486,7 +492,7 @@ textarea.input-field {
 }
 
 .border-glow {
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
 }
 
 .hover-lift {
@@ -518,7 +524,7 @@ textarea.input-field {
 .section-header icon {
   width: 24px;
   height: 24px;
-  color: var(--color-accent-400);
+  color: #00e5ff;
   flex-shrink: 0;
 }
 

@@ -20,10 +20,10 @@ export default function Layout() {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-navy-950">
+    <div className="flex h-screen w-screen overflow-hidden bg-black">
       {/* Sidebar */}
       <aside
-        className={`flex flex-col h-full transition-all duration-300 ease-in-out border-r border-glass-border bg-navy-900/80 backdrop-blur-xl ${
+        className={`flex flex-col h-full transition-all duration-300 ease-in-out border-r border-glass-border bg-slate-900/80 backdrop-blur-xl ${
           collapsed ? 'w-[68px]' : 'w-[260px]'
         }`}
       >
@@ -50,8 +50,8 @@ export default function Layout() {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
                   isActive
-                    ? 'bg-accent-500/20 text-accent-400 border border-accent-500/30'
-                    : 'text-text-secondary hover:text-text-primary hover:bg-navy-800/50'
+                    ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30'
+                    : 'text-text-secondary hover:text-text-primary hover:bg-slate-800/50'
                 }`
               }
             >
@@ -79,7 +79,7 @@ export default function Layout() {
         {/* Collapse toggle */}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="flex items-center justify-center h-12 border-t border-glass-border text-text-muted hover:text-text-primary hover:bg-navy-800/50 transition-colors"
+          className="flex items-center justify-center h-12 border-t border-glass-border text-text-muted hover:text-text-primary hover:bg-slate-800/50 transition-colors"
         >
           {collapsed ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
         </button>

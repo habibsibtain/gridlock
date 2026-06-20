@@ -15,8 +15,8 @@ import LoadingSpinner from '../components/shared/LoadingSpinner';
 const DARK_TILE_URL = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
 
 const PIE_COLORS = [
-  '#38bdf8', '#f97316', '#22c55e', '#eab308', '#a855f7',
-  '#ef4444', '#06b6d4', '#ec4899', '#84cc16', '#f59e0b',
+  '#00e5ff', '#f97316', '#22c55e', '#eab308', '#a855f7',
+  '#ef4444', '#00e5ff', '#ec4899', '#84cc16', '#f59e0b',
   '#6366f1', '#14b8a6',
 ];
 
@@ -87,11 +87,11 @@ export default function AnalyticsPage() {
       {/* Key Metrics Row */}
       <div className="grid grid-cols-5 gap-4 mb-6">
         {[
-          { label: 'Total Incidents', value: stats.total_incidents?.toLocaleString(), icon: Activity, color: 'text-accent-400' },
+          { label: 'Total Incidents', value: stats.total_incidents?.toLocaleString(), icon: Activity, color: 'text-cyan-300' },
           { label: 'Active Now', value: stats.active_incidents, icon: AlertTriangle, color: 'text-risk-critical' },
           { label: 'Highest Risk', value: stats.highest_risk_corridor?.corridor, sub: `${stats.highest_risk_corridor?.count} incidents`, icon: MapPin, color: 'text-risk-high' },
           { label: 'Top Cause', value: stats.most_common_cause?.cause?.replace('_', ' '), sub: `${stats.most_common_cause?.count} (${((stats.most_common_cause?.count / stats.total_incidents) * 100).toFixed(1)}%)`, icon: TrendingUp, color: 'text-risk-moderate' },
-          { label: 'Avg ECRS', value: stats.avg_ecrs, icon: Activity, color: 'text-accent-400' },
+          { label: 'Avg ECRS', value: stats.avg_ecrs, icon: Activity, color: 'text-cyan-300' },
         ].map((m, i) => (
           <div key={i} className="glass-panel px-5 py-4 hover-lift animate-slide-in-up" style={{ animationDelay: `${i * 60}ms` }}>
             <div className="flex items-center gap-2 mb-2">
@@ -109,7 +109,7 @@ export default function AnalyticsPage() {
         {/* Hourly Distribution */}
         <div className="glass-panel px-6 py-5">
           <h3 className="text-base font-semibold text-text-primary mb-4 flex items-center gap-3">
-            <Clock className="w-5 h-5 text-accent-400 flex-shrink-0" /> Incidents by Hour
+            <Clock className="w-5 h-5 text-cyan-300 flex-shrink-0" /> Incidents by Hour
           </h3>
           <ResponsiveContainer width="100%" height={280}>
             <BarChart data={hourlyData}>
@@ -119,7 +119,7 @@ export default function AnalyticsPage() {
               <Tooltip content={<CustomTooltip />} />
               <defs>
                 <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#38bdf8" stopOpacity={0.9} />
+                  <stop offset="0%" stopColor="#00e5ff" stopOpacity={0.9} />
                   <stop offset="100%" stopColor="#0284c7" stopOpacity={0.6} />
                 </linearGradient>
               </defs>
@@ -131,7 +131,7 @@ export default function AnalyticsPage() {
         {/* Cause Breakdown Donut */}
         <div className="glass-panel px-6 py-5">
           <h3 className="text-base font-semibold text-text-primary mb-4 flex items-center gap-3">
-            <AlertTriangle className="w-5 h-5 text-accent-400 flex-shrink-0" /> Cause Breakdown
+            <AlertTriangle className="w-5 h-5 text-cyan-300 flex-shrink-0" /> Cause Breakdown
           </h3>
           <ResponsiveContainer width="100%" height={280}>
             <PieChart>
@@ -166,7 +166,7 @@ export default function AnalyticsPage() {
         {/* Day of Week */}
         <div className="glass-panel p-4">
           <h3 className="text-sm font-semibold text-text-primary mb-3 flex items-center gap-2">
-            <Activity className="w-4 h-4 text-accent-400" /> Incidents by Day of Week
+            <Activity className="w-4 h-4 text-cyan-300" /> Incidents by Day of Week
           </h3>
           <ResponsiveContainer width="100%" height={240}>
             <AreaChart data={dayData}>
@@ -188,7 +188,7 @@ export default function AnalyticsPage() {
         {/* Heatmap */}
         <div className="glass-panel p-4">
           <h3 className="text-sm font-semibold text-text-primary mb-3 flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-accent-400" /> Incident Hotspot Map
+            <MapPin className="w-4 h-4 text-cyan-300" /> Incident Hotspot Map
           </h3>
           <div className="h-[240px] rounded-lg overflow-hidden border border-glass-border">
             <MapContainer center={[12.97, 77.59]} zoom={11} className="h-full w-full" zoomControl={false}>
@@ -224,7 +224,7 @@ export default function AnalyticsPage() {
       {/* Corridor Ranking Table */}
       <div className="glass-panel p-4 mb-4">
         <h3 className="text-sm font-semibold text-text-primary mb-3 flex items-center gap-2">
-          <TrendingUp className="w-4 h-4 text-accent-400" /> Corridor Risk Ranking
+          <TrendingUp className="w-4 h-4 text-cyan-300" /> Corridor Risk Ranking
         </h3>
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
@@ -244,7 +244,7 @@ export default function AnalyticsPage() {
                 const maxCount = corridorData[0]?.count || 1;
                 const pct = (c.count / maxCount * 100).toFixed(0);
                 return (
-                  <tr key={idx} className="border-b border-glass-border/50 hover:bg-navy-800/40 transition-colors">
+                  <tr key={idx} className="border-b border-glass-border/50 hover:bg-slate-800/40 transition-colors">
                     <td className="py-2.5 px-3 text-text-muted">{idx + 1}</td>
                     <td className="py-2.5 px-3 font-medium text-text-primary">{c.corridor}</td>
                     <td className="py-2.5 px-3 text-text-secondary">{c.count}</td>
@@ -253,12 +253,12 @@ export default function AnalyticsPage() {
                     <td className="py-2.5 px-3 text-text-secondary">{c.avg_duration || 'N/A'} min</td>
                     <td className="py-2.5 px-3">
                       <div className="flex items-center gap-2">
-                        <div className="flex-1 h-2 bg-navy-800 rounded-full overflow-hidden">
+                        <div className="flex-1 h-2 bg-slate-800 rounded-full overflow-hidden">
                           <div
                             className="h-full rounded-full transition-all"
                             style={{
                               width: `${pct}%`,
-                              background: `linear-gradient(90deg, #38bdf8, ${c.avg_ecrs >= 4 ? '#f97316' : '#22c55e'})`,
+                              background: `linear-gradient(90deg, #00e5ff, ${c.avg_ecrs >= 4 ? '#f97316' : '#22c55e'})`,
                             }}
                           />
                         </div>
@@ -284,7 +284,7 @@ export default function AnalyticsPage() {
                 <span className="text-xs text-text-secondary flex-1">{s.station}</span>
                 <span className="text-xs font-semibold text-text-primary">{s.count}</span>
                 <div className="w-20 h-1.5 bg-navy-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-accent-400/60 rounded-full" style={{ width: `${(s.count / (stats.busiest_stations[0]?.count || 1)) * 100}%` }} />
+                  <div className="h-full bg-cyan-300/60 rounded-full" style={{ width: `${(s.count / (stats.busiest_stations[0]?.count || 1)) * 100}%` }} />
                 </div>
               </div>
             ))}

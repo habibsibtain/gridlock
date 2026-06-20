@@ -59,11 +59,11 @@ export default function AlertFeed({ incidents = [], onGetRecommendation }) {
             return (
               <div
                 key={incident.id || idx}
-                className="glass-panel px-4 py-4 hover:border-accent-400/40 transition-all cursor-default animate-slide-in-up"
+                className="glass-panel px-4 py-4 hover:border-cyan-300/40 transition-all cursor-default animate-slide-in-up"
                 style={{ animationDelay: `${idx * 50}ms` }}
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-navy-700 flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-10 h-10 rounded-lg bg-slate-700 flex items-center justify-center shrink-0 mt-0.5">
                     <CauseIcon className="w-5 h-5 text-text-secondary" />
                   </div>
                   
@@ -81,7 +81,7 @@ export default function AlertFeed({ incidents = [], onGetRecommendation }) {
                     
                     <div className="flex items-center gap-4 text-xs text-text-muted mb-3">
                       {incident.corridor && incident.corridor !== 'Non-corridor' && (
-                        <span className="bg-navy-700 px-2 py-1 rounded text-[9px]">{incident.corridor}</span>
+                        <span className="bg-slate-700 px-2 py-1 rounded text-[9px]">{incident.corridor}</span>
                       )}
                       {incident.duration_minutes && (
                         <span className="flex items-center gap-1">

@@ -26,7 +26,7 @@ function getBaselineColor(baseline) {
     case 'public_holiday': return 'text-green-400 bg-green-400/10 border-green-400/30';
     case 'state_event': return 'text-purple-400 bg-purple-400/10 border-purple-400/30';
     case 'festival': return 'text-amber-400 bg-amber-400/10 border-amber-400/30';
-    default: return 'text-text-secondary bg-navy-700 border-glass-border';
+    default: return 'text-text-secondary bg-slate-700 border-glass-border';
   }
 }
 
@@ -103,7 +103,7 @@ export default function EventPlannerPage() {
       {/* Calendar */}
       <div className="flex-1 flex flex-col p-6 overflow-y-auto gap-4">
         <div className="flex items-center gap-4">
-          <CalendarIcon className="w-6 h-6 text-accent-400 flex-shrink-0" />
+          <CalendarIcon className="w-6 h-6 text-cyan-300 flex-shrink-0" />
           <h1 className="text-3xl font-bold text-text-primary">Event Planner</h1>
           <button onClick={() => setShowNewEvent(!showNewEvent)} className="ml-auto btn-primary text-sm py-2.5">
             <Plus className="w-4 h-4" /> New Event Forecast
@@ -146,7 +146,7 @@ export default function EventPlannerPage() {
             </div>
             <div className="flex items-center gap-4 mt-4">
               <label className="flex items-center gap-2 text-sm text-text-secondary cursor-pointer">
-                <input type="checkbox" checked={newEvent.requires_road_closure} onChange={e => setNewEvent({...newEvent, requires_road_closure: e.target.checked})} className="accent-accent-400" />
+                <input type="checkbox" checked={newEvent.requires_road_closure} onChange={e => setNewEvent({...newEvent, requires_road_closure: e.target.checked})} className="accent-cyan-300" />
                 Requires Road Closure
               </label>
               <button onClick={handleForecast} className="btn-primary text-xs ml-auto" disabled={loading}>
@@ -163,12 +163,12 @@ export default function EventPlannerPage() {
                 </div>
                 <div className="glass-panel-sm p-3 text-center">
                   <p className="text-[10px] text-text-muted mb-1">Gravity Score</p>
-                  <p className="text-xl font-bold text-accent-400">{forecastResult.gravity?.score?.toFixed(2)}</p>
+                  <p className="text-xl font-bold text-cyan-300">{forecastResult.gravity?.score?.toFixed(2)}</p>
                   <p className="text-[10px] text-text-muted">{forecastResult.gravity?.nearby_pois?.length || 0} nearby POIs</p>
                 </div>
                 <div className="glass-panel-sm p-3 text-center">
                   <p className="text-[10px] text-text-muted mb-1">Recommended</p>
-                  <p className="text-xl font-bold text-accent-400">{forecastResult.resources?.total_officers}</p>
+                  <p className="text-xl font-bold text-cyan-300">{forecastResult.resources?.total_officers}</p>
                   <p className="text-[10px] text-text-muted">officers</p>
                 </div>
                 {forecastResult.historical && (
@@ -247,10 +247,10 @@ export default function EventPlannerPage() {
       </div>
 
       {/* Event Detail Panel */}
-      <div className="w-[360px] border-l border-glass-border overflow-y-auto p-4 bg-navy-900/40">
+      <div className="w-[360px] border-l border-glass-border overflow-y-auto p-4 bg-slate-900/40">
         {!selectedDate ? (
           <div className="flex flex-col items-center justify-center h-full text-center">
-            <CalendarIcon className="w-12 h-12 text-navy-600 mb-3" />
+            <CalendarIcon className="w-12 h-12 text-slate-600 mb-3" />
             <p className="text-sm text-text-muted">Select a date to view</p>
             <p className="text-xs text-text-muted mt-1">event details and risk assessment</p>
           </div>
@@ -271,7 +271,7 @@ export default function EventPlannerPage() {
                     {/* Multiplier */}
                     <div className="glass-panel-sm p-3 mb-3">
                       <p className="text-[10px] text-text-muted mb-1">Traffic Multiplier</p>
-                      <p className="text-2xl font-bold text-accent-400">{dateRisk.combined_multiplier}x</p>
+                      <p className="text-2xl font-bold text-cyan-300">{dateRisk.combined_multiplier}x</p>
                       <p className="text-[10px] text-text-muted mt-1">{dateRisk.baseline_config?.description}</p>
                     </div>
 
@@ -300,7 +300,7 @@ export default function EventPlannerPage() {
                     </h4>
                     <div className="flex flex-wrap gap-1.5">
                       {dateRisk.affected_zones?.map((zone, idx) => (
-                        <span key={idx} className="text-[10px] bg-navy-700 text-text-secondary px-2 py-1 rounded">
+                        <span key={idx} className="text-[10px] bg-slate-700 text-text-secondary px-2 py-1 rounded">
                           {zone}
                         </span>
                       ))}
@@ -313,7 +313,7 @@ export default function EventPlannerPage() {
                     <div className="space-y-1.5">
                       {dateRisk.recommendations?.map((rec, idx) => (
                         <p key={idx} className="text-[11px] text-text-secondary flex items-start gap-1.5">
-                          <Info className="w-3 h-3 text-accent-400 shrink-0 mt-0.5" />
+                          <Info className="w-3 h-3 text-cyan-300 shrink-0 mt-0.5" />
                           {rec}
                         </p>
                       ))}
