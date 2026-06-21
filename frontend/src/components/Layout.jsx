@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import {
-  LayoutDashboard,
-  Calendar,
-  BarChart3,
   Shield,
   Radio,
   ChevronLeft,
   ChevronRight,
+  Brain,
+  Cpu,
+  FlaskConical,
+  CalendarDays,
+  MessageSquarePlus,
 } from 'lucide-react';
 
 const navItems = [
-  { path: '/', icon: LayoutDashboard, label: 'Live Operations', description: 'Real-time monitoring' },
-  { path: '/planner', icon: Calendar, label: 'Event Planner', description: 'Calendar & forecast' },
-  { path: '/analytics', icon: BarChart3, label: 'Analytics', description: 'Trends & insights' },
+  { path: '/', icon: Brain, label: 'ML Predict', description: 'CREST AI engine' },
+  { path: '/simulator', icon: FlaskConical, label: 'What-If', description: 'Scenario simulator' },
+  { path: '/events', icon: CalendarDays, label: 'Event Calendar', description: 'Conflict detection' },
+  { path: '/feedback', icon: MessageSquarePlus, label: 'Feedback Loop', description: 'Post-event learning' },
+  { path: '/ml-analytics', icon: Cpu, label: 'ML Analytics', description: 'Model insights' },
 ];
 
 export default function Layout() {
@@ -34,7 +38,7 @@ export default function Layout() {
           </div>
           {!collapsed && (
             <div className="animate-fade-in">
-              <h1 className="text-lg font-bold text-gradient tracking-wider">ASTRAM</h1>
+              <h1 className="text-lg font-bold text-gradient tracking-wider">CREST</h1>
               <p className="text-xs text-text-muted leading-none mt-0.5">Traffic Intelligence</p>
             </div>
           )}

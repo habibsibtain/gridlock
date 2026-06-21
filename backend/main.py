@@ -1,6 +1,6 @@
 """
 ASTRAM Backend — FastAPI Application Entry Point
-Event-Driven Congestion Intelligence System for Bengaluru Traffic Police.
+CREST — ML-Powered Traffic Intelligence System.
 """
 
 import os
@@ -11,13 +11,15 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from database import init_database
-from routers import incidents, forecast, gravity, cascade, calendar_risk, llm_advisor
+from routers import ml_predict
+from routers import simulator
+from routers import feedback
+from routers import events
 
 app = FastAPI(
-    title="ASTRAM API",
-    description="Event-Driven Congestion Intelligence System for Bengaluru Traffic Police",
-    version="1.0.0",
+    title="CREST API",
+    description="ML-Powered Traffic Intelligence System for Bengaluru Traffic Police",
+    version="2.0.0",
 )
 
 # CORS middleware for React dev server
@@ -29,23 +31,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
-app.include_router(incidents.router)
-app.include_router(forecast.router)
-app.include_router(gravity.router)
-app.include_router(cascade.router)
-app.include_router(calendar_risk.router)
-app.include_router(llm_advisor.router)
+# Include all routers
+app.include_router(ml_predict.router)
+app.include_router(simulator.router)
+app.include_router(feedback.router)
+app.include_router(events.router)
 
 
 @app.on_event("startup")
 def startup():
-    """Initialize database on application startup."""
+    """Initialize ML models on application startup."""
     print("=" * 60)
-    print("  ASTRAM — Event-Driven Congestion Intelligence System")
+    print("  CREST — ML-Powered Traffic Intelligence")
     print("  Bengaluru Traffic Police Command Center")
     print("=" * 60)
-    init_database()
+    # Pre-load ML models
+    try:
+        ml_predict._load_models()
+    except Exception as e:
+        print(f"  ML model loading skipped: {e}")
     print("Backend ready. All systems operational.")
     print("=" * 60)
 
@@ -53,10 +57,10 @@ def startup():
 @app.get("/")
 def root():
     return {
-        "name": "ASTRAM API",
-        "version": "1.0.0",
+        "name": "CREST API",
+        "version": "2.0.0",
         "status": "operational",
-        "description": "Event-Driven Congestion Intelligence System",
+        "description": "ML-Powered Traffic Intelligence System",
     }
 
 
