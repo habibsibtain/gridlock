@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 
-const API_BASE = '/api';
-
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:7860/api';
 /**
  * useGridlock — custom hook for CREST ML endpoints.
  * Exposes predict(), fetchAnalytics(), simulate(), submitFeedback(),
