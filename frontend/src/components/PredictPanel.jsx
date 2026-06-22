@@ -111,9 +111,9 @@ export default function PredictPanel() {
   };
 
   return (
-    <div className="h-full flex overflow-hidden">
+    <div className="h-full flex flex-col lg:flex-row overflow-hidden">
       {/* Left — Input Form */}
-      <div className="w-[420px] border-r border-glass-border overflow-y-auto p-6 pt-6 bg-slate-900/30">
+      <div className="w-full lg:w-[420px] border-b lg:border-b-0 lg:border-r border-glass-border overflow-y-auto p-4 sm:p-6 pt-5 sm:pt-6 bg-slate-900/30 shrink-0">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 rounded-lg gradient-accent flex items-center justify-center shrink-0">
             <Brain className="w-5 h-5 text-white" />
@@ -156,7 +156,7 @@ export default function PredictPanel() {
           </div>
 
           {/* Hour / Day / Month */}
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
             <div>
               <label className="text-xs text-text-muted block mb-1.5 font-medium">Hour (0-23)</label>
               <input
@@ -274,7 +274,7 @@ export default function PredictPanel() {
       </div>
 
       {/* Right — Result Display */}
-      <div className="flex-1 overflow-y-auto p-6 pt-6">
+      <div className="flex-1 overflow-y-auto p-4 sm:p-6 pt-5 sm:pt-6">
         {!result && !loading && (
           <div className="h-full flex flex-col items-center justify-center text-center">
             <Brain className="w-16 h-16 text-slate-700 mb-5" />
@@ -309,14 +309,14 @@ export default function PredictPanel() {
             </div>
 
             {/* Top Row — Severity + Key Metrics */}
-            <div className="grid grid-cols-[1fr_2fr] gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-4">
               {/* Severity Gauge */}
               <div className="glass-panel flex items-center justify-center py-8">
                 <SeverityGauge score={result.severity_score} label={result.severity_label} />
               </div>
 
               {/* Key Metrics */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 {/* Resolution */}
                 <div className="glass-panel px-4 py-3 hover-lift">
                   <div className="flex items-center gap-2 mb-2">

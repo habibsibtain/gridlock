@@ -109,20 +109,20 @@ export default function EventCalendar() {
   };
 
   return (
-    <div className="h-full overflow-y-auto p-6 pt-7" id="event-calendar">
+    <div className="h-full overflow-y-auto p-4 sm:p-6 pt-5 sm:pt-7" id="event-calendar">
       {/* Header */}
-      <div className="flex items-center gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-6">
         <div className="w-10 h-10 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0">
           <CalendarDays className="w-5 h-5 text-amber-400" />
         </div>
-        <div>
-          <h1 className="text-2xl font-bold text-text-primary">Event Calendar</h1>
+        <div className="flex-1 min-w-0">
+          <h1 className="text-xl sm:text-2xl font-bold text-text-primary">Event Calendar</h1>
           <p className="text-xs text-text-muted mt-0.5">Multi-event conflict detection & resource optimization</p>
         </div>
         <button
           onClick={() => { setShowForm(!showForm); setConflictResult(null); }}
-          className="ml-auto px-4 py-2.5 gradient-accent text-black font-bold rounded-lg text-sm
-                     hover:opacity-90 transition flex items-center gap-2"
+          className="w-full sm:w-auto px-4 py-2.5 gradient-accent text-black font-bold rounded-lg text-sm
+                     hover:opacity-90 transition flex items-center justify-center gap-2"
         >
           <Plus className="w-4 h-4" />
           Plan Event
@@ -138,8 +138,8 @@ export default function EventCalendar() {
           </h3>
 
           <form onSubmit={handleCreate}>
-            <div className="grid grid-cols-3 gap-4 mb-4">
-              <div className="col-span-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4">
+              <div className="sm:col-span-2">
                 <label className="text-[10px] text-text-muted block mb-1 font-medium">Event Name</label>
                 <input type="text" className="input-field text-sm" required placeholder="e.g. IPL Match at Chinnaswamy"
                   value={form.name} onChange={e => handleChange('name', e.target.value)} />
@@ -151,7 +151,7 @@ export default function EventCalendar() {
               </div>
             </div>
 
-            <div className="grid grid-cols-4 gap-4 mb-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-4">
               <div>
                 <label className="text-[10px] text-text-muted block mb-1 font-medium">Cause Type</label>
                 <select className="input-field text-xs" value={form.event_cause}
@@ -178,7 +178,7 @@ export default function EventCalendar() {
               </div>
             </div>
 
-            <div className="flex gap-3 items-end">
+            <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-end">
               <button type="button" onClick={handleCheckConflicts} disabled={checking}
                 className="px-4 py-2 rounded-lg text-xs font-bold border border-amber-500/30 bg-amber-500/10
                            text-amber-400 hover:bg-amber-500/20 transition flex items-center gap-2 disabled:opacity-50">
@@ -260,7 +260,7 @@ export default function EventCalendar() {
                     <Lightbulb className="w-3.5 h-3.5 text-emerald-400" />
                     Recommended Time Slots
                   </h4>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                     {conflictResult.suggested_slots.map((slot, i) => (
                       <button
                         key={i}
@@ -321,7 +321,7 @@ export default function EventCalendar() {
                                          text-[9px] font-bold rounded uppercase">High Risk</span>
                       )}
                     </div>
-                    <div className="flex items-center gap-4 text-xs text-text-muted">
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs text-text-muted">
                       <span className="flex items-center gap-1">
                         <MapPin className="w-3 h-3" /> {event.corridor}
                       </span>

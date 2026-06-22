@@ -134,18 +134,18 @@ export default function AnalyticsDashboard() {
   ];
 
   return (
-    <div className="h-full overflow-y-auto p-6 pt-7" id="analytics-dashboard">
+    <div className="h-full overflow-y-auto p-4 sm:p-6 pt-5 sm:pt-7" id="analytics-dashboard">
       {/* Header */}
-      <div className="flex items-center gap-4 mb-7">
-        <BarChart3 className="w-7 h-7 text-cyan-300 shrink-0" />
-        <h1 className="text-3xl font-bold text-text-primary">ML Analytics</h1>
-        <span className="ml-auto px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-semibold">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-5 sm:mb-7">
+        <BarChart3 className="w-6 sm:w-7 h-6 sm:h-7 text-cyan-300 shrink-0" />
+        <h1 className="text-2xl sm:text-3xl font-bold text-text-primary">ML Analytics</h1>
+        <span className="sm:ml-auto px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-semibold">
           CREST Model Insights
         </span>
       </div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-4 gap-5 mb-7">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 mb-5 sm:mb-7">
         {statCards.map((card, i) => (
           <div
             key={i}
@@ -164,7 +164,7 @@ export default function AnalyticsDashboard() {
       </div>
 
       {/* Charts Row 1 */}
-      <div className="grid grid-cols-2 gap-5 mb-7">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 mb-5 sm:mb-7">
         {/* Cause Distribution Bar Chart */}
         <div className="glass-panel px-6 py-5" id="cause-distribution-chart">
           <h3 className="text-base font-semibold text-text-primary mb-4 flex items-center gap-3">
@@ -221,7 +221,7 @@ export default function AnalyticsDashboard() {
       </div>
 
       {/* Charts Row 2 */}
-      <div className="grid grid-cols-2 gap-5 mb-7">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 mb-5 sm:mb-7">
         {/* Closure Pie Chart */}
         <div className="glass-panel px-6 py-5" id="closure-pie-chart">
           <h3 className="text-base font-semibold text-text-primary mb-4 flex items-center gap-3">

@@ -84,21 +84,21 @@ export default function SimulatorPanel() {
   };
 
   return (
-    <div className="h-full overflow-y-auto p-6 pt-7" id="simulator-panel">
+    <div className="h-full overflow-y-auto p-4 sm:p-6 pt-5 sm:pt-7" id="simulator-panel">
       {/* Header */}
-      <div className="flex items-center gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-6">
         <div className="w-10 h-10 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center shrink-0">
           <FlaskConical className="w-5 h-5 text-purple-400" />
         </div>
-        <div>
-          <h1 className="text-2xl font-bold text-text-primary">What-If Simulator</h1>
+        <div className="flex-1 min-w-0">
+          <h1 className="text-xl sm:text-2xl font-bold text-text-primary">What-If Simulator</h1>
           <p className="text-xs text-text-muted mt-0.5">Compare scenarios side-by-side to find optimal timing</p>
         </div>
         <button
           onClick={runSimulation}
           disabled={loading || scenarios.length < 2}
-          className="ml-auto px-5 py-2.5 gradient-accent text-black font-bold rounded-lg text-sm
-                     hover:opacity-90 transition disabled:opacity-50 flex items-center gap-2"
+          className="w-full sm:w-auto px-5 py-2.5 gradient-accent text-black font-bold rounded-lg text-sm
+                     hover:opacity-90 transition disabled:opacity-50 flex items-center justify-center gap-2"
         >
           {loading ? (
             <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
@@ -110,7 +110,7 @@ export default function SimulatorPanel() {
       </div>
 
       {/* Scenario Cards */}
-      <div className="grid gap-4 mb-6" style={{ gridTemplateColumns: `repeat(${scenarios.length}, 1fr)` }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
         {scenarios.map((s, idx) => (
           <div
             key={idx}
@@ -246,7 +246,7 @@ export default function SimulatorPanel() {
           )}
 
           {/* Result Cards */}
-          <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${results.results.length}, 1fr)` }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
             {results.results.map((r, idx) => {
               const p = r.prediction;
               const isBest = results.comparison?.best_scenario === idx;
